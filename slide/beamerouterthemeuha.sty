@@ -1,0 +1,79 @@
+% Name : beamerouterthemeuha.sty
+% Author : Sébastien Bindel <sébastien.bindel@uha.fr>
+
+%--------------------------------------------------------------
+% Mandatory part
+%--------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerouterthemeuha}[2018/10/22 uha outer theme]
+
+%--------------------------------------------------------------
+% First frame
+%--------------------------------------------------------------
+\defbeamertemplate*{title page}{uha}{
+	\nointerlineskip
+	\begin{beamercolorbox}[dp=2.3ex, sep=2ex, wd=\paperwidth, ht=\paperheight]{titlepage}
+		\vbox to 62ex{
+			\hfill %\input{logo-uha/logo-titre.tikz}
+			
+			\vspace{4em}
+			
+			{\bfseries \Large \inserttitle} \\
+			\vspace{1em}
+			{\large \insertsubtitle}
+			\vspace{1.5em}
+			
+			\textcolor{blueUHA2}{\rule{0.8\linewidth}{.5pt}}
+			
+			\vspace{1.5em}
+			\insertauthor \\
+			\vspace{0.5em}
+			\insertdate \\
+			\vspace{0.5em}
+			\insertinstitute
+		}
+	\end{beamercolorbox}
+	\setbeamertemplate{footline}[page number]{}
+}
+%--------------------------------------------------------------
+% Title frame
+%--------------------------------------------------------------
+\defbeamertemplate*{frametitle}{uha}{
+	\nointerlineskip
+	\begin{beamercolorbox}[sep=0.27cm,ht=2.7em,wd=\paperwidth, shadow=true]{frametitle}
+		\vbox{}\vskip-2ex%
+		\strut\insertframetitle\strut
+		\hfill
+		%\raisebox{-1.7mm}{\includegraphics[height=3.2ex]{logo-uha/logo}}
+	\end{beamercolorbox}%
+}
+
+%--------------------------------------------------------------
+% Footer
+%--------------------------------------------------------------
+\setbeamercolor{footline}{parent=palette secondary}
+\defbeamertemplate*{footline}{uha}{
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=1.5ex,right]{}%
+		\insertframenumber \hspace{0.9em}
+    \end{beamercolorbox}
+}
+
+%--------------------------------------------------------------
+% Section page
+%--------------------------------------------------------------
+\defbeamertemplate*{section page}{uha}{
+	\nointerlineskip
+	\begin{beamercolorbox}[dp=2.3ex, sep=2ex, wd=\paperwidth, ht=\paperheight]{titlepage}
+		\vbox to 35ex{
+			\hspace{0.16\linewidth}
+			\begin{minipage}[c]{0.6\linewidth}
+				{\Large \bfseries \insertsection}
+
+				\begin{tikzpicture}
+					\draw[line width=0.5pt, color=blueUHA2] (0,0) -- (\linewidth,0);
+				\end{tikzpicture}
+			\end{minipage}
+		}
+	\end{beamercolorbox}
+}
+\AtBeginSection{\frame[noframenumbering]{\sectionpage}}
